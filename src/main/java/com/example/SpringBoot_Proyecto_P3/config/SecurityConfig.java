@@ -20,8 +20,8 @@ public class SecurityConfig {
         return httpSecurity
                 .csrf(csrf-> csrf.disable())
                 .authorizeHttpRequests(auth-> {
-                        auth.requestMatchers("v1/saludos","/v1/test","/registro","/error").permitAll()
-                                .requestMatchers("v1/privado").authenticated();
+                        auth.requestMatchers("/api/saludos","/v1/test","/registro","/error","api/example").permitAll()
+                                .requestMatchers("api/privado").authenticated();
                                // .anyRequest().authenticated();
                 })
                 .formLogin().permitAll()

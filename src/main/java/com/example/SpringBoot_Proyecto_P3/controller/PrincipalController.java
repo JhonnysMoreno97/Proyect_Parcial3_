@@ -37,12 +37,14 @@ public class PrincipalController {
     }
 
     // Endpoint público con internacionalización
-    @GetMapping("/saludo")
+    @GetMapping("/saludos")
     public String publico(@RequestParam(name = "lang", defaultValue = "en") String lang) {
-        System.out.println("Hola Bienvenido " + lang);
+        System.out.println("Hola Bienvenido ");
         Locale locale = new Locale(lang);
         return messageSource.getMessage("saludo", null, locale);
     }
+
+
 
     // Endpoint privado con internacionalización
     @GetMapping("/privado")
