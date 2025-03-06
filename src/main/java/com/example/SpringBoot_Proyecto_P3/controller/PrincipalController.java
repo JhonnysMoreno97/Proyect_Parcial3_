@@ -46,6 +46,7 @@ public class PrincipalController {
 
 
 
+
     // Endpoint privado con internacionalización
     @GetMapping("/privado")
     public String privado(@RequestParam(name = "lang", defaultValue = "en") String lang) {
