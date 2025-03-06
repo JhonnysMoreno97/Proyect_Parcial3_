@@ -16,10 +16,10 @@ import org.springframework.data.annotation.Id;
 @Document("productos")
 public class Producto {
 
-    @Id
+    @Id // Indica que este campo es la clave primaria en MongoDB
     private String id;
 
-    @Indexed
+    @Indexed // Crea un índice en la base de datos para optimizar las búsquedas por nombre de producto
     private String nombre_producto;
-    private double precio_producto;
+    private double precio_producto; // Almacena el precio del producto
 }

@@ -10,20 +10,36 @@ import reactor.core.scheduler.Schedulers;
 
 import java.util.Locale;
 
+// Indica que esta clase es un controlador REST en Spring WebFlux
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api") // Define un prefijo común para las rutas del controlador
+
 public class MessageController {
 
     @Autowired
-    private MessageSource messageSource;
+    private MessageSource messageSource; // Inyección del servicio para la gestión de mensajes internacionalizados (i18n)
 
+    /**
+     * Endpoint público que retorna un saludo en el idioma especificado en la cabecera "Accept-Language".
+     *
+     * @param acceptLanguage (Opcional) Cabecera HTTP que especifica el idioma preferido del usuario.
+     * @return Un saludo localizado basado en los archivos de mensajes de i18n.
+     */
 
     @GetMapping("/saludos")
     public Mono<String> obtenerSaludo(@RequestHeader(name = "Accept-Language",
             required = false) String acceptLanguage) {
+        // Retorna el mensaje "saludo" del archivo de propiedades según el idioma del contexto actual
         return Mono.just(messageSource.getMessage("saludo", null, LocaleContextHolder.getLocale()));
 
     }
+
+    /**
+     * Endpoint privado que también retorna un saludo, pero requiere autenticación.
+     *
+     * @param acceptLanguage (Opcional) Cabecera HTTP que especifica el idioma preferido del usuario.
+     * @return Un saludo localizado
+     */
 
     @GetMapping("/privado")
     public Mono<String> index2(@RequestHeader(name = "Accept-Language",

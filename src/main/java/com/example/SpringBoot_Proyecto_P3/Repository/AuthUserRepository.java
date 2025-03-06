@@ -6,8 +6,20 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+/**
+ * Interfaz que define las operaciones de repositorio para la entidad AuthUser.
+ * Extiende de MongoRepository, lo que permite realizar operaciones CRUD en MongoDB.
+        */
+
 @Repository
 public interface AuthUserRepository extends MongoRepository<AuthUser, String>{
+
+   /**
+    * Método para encontrar un usuario por su nombre de usuario.
+    *
+    * @return Un objeto Optional que contiene el usuario si se encuentra, o vacío si no existe.
+    */
+
    Optional<AuthUser> findByUsername(String username);
 
 

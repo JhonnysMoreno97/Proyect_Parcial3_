@@ -11,12 +11,18 @@ import reactor.core.publisher.Flux;
 
 
 @RestController
-@RequestMapping("/api/productos")
+@RequestMapping("/api/productos") // Define la ruta base para los endpoints de productos
 public class ProductoController {
 
 
     @Autowired
-    private ProductoService productoService;
+    private ProductoService productoService; // Inyección del servicio que maneja la lógica de productos
+
+    /**
+     * Endpoint para listar todos los productos.
+     *
+     * @return Un flujo reactivo (Flux) con la lista de productos.
+     */
 
     @GetMapping
     public Flux<Producto> ListarProductos() {

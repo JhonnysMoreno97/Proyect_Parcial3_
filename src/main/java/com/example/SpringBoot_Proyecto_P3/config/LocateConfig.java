@@ -14,7 +14,9 @@ public class LocateConfig {
 
         ReloadableResourceBundleMessageSource messageSource = new
                 ReloadableResourceBundleMessageSource();
+        // Define la ubicación base de los archivos de mensajes (sin la extensión .properties)
         messageSource.setBasename("classpath:messages");
+        // Especifica la codificación de caracteres para evitar problemas con caracteres especiales
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
 
